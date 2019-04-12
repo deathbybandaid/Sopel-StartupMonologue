@@ -52,7 +52,7 @@ def bot_startup_monologue(bot, trigger):
 
         for commandstype in bot.memory['Sopel-CommandsQuery'].keys():
             if commandstype.endswith("_count"):
-                availablecomsfiles += bot.memory['Sopel-CommandsQuery'][commandstype + "_count"]
+                availablecomsfiles += bot.memory['Sopel-CommandsQuery'][commandstype]
             else:
                 availablecomsnum += len(bot.memory['Sopel-CommandsQuery'][commandstype].keys())
 
