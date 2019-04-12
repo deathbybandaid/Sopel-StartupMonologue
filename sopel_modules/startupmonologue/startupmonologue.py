@@ -51,7 +51,7 @@ def bot_startup_monologue(bot, trigger):
         availablecomsnum, availablecomsfiles = 0, 0
 
         for commandstype in bot.memory['Sopel-CommandsQuery'].keys():
-            availablecomsnum += len(bot.memory['Sopel-CommandsQuery'][commandstype].keys())
+            availablecomsnum += bot.memory['Sopel-CommandsQuery'][commandstype]
             availablecomsfiles += bot.memory['Sopel-CommandsQuery'][commandstype + "_count"]
 
         startupcomplete.append("There are " + str(availablecomsnum) + " commands available in " + str(availablecomsfiles) + " files.")
