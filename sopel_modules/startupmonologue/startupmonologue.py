@@ -36,8 +36,6 @@ def setup(bot):
 def bot_startup_monologue(bot, trigger):
 
     if botevents_installed:
-        while 'Sopel-BotEvents' not in bot.memory:
-            pass
         while not check_bot_events(bot, ["connected"]):
             pass
     else:
@@ -75,7 +73,7 @@ def bot_startup_monologue(bot, trigger):
 
     # Announce to chan, then handle some closing stuff
     bot.osd(startupcomplete, bot.channels.keys())
+    stderr("[Sopel-startupmonologue] " + bot.nick + " startup complete")
 
     if botevents_installed:
-        startup_bot_event(bot, "Sopel-StartupMonologue")
-    stderr("[Sopel-startupmonologue] " + bot.nick + " startup complete")
+        set_bot_event(bot, "Sopel-StartupMonologue")
