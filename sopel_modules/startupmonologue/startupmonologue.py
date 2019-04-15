@@ -3,6 +3,7 @@
 from __future__ import unicode_literals, absolute_import, division, print_function
 
 from sopel import module
+from sopel.tools import stderr
 
 import sopel_modules.osd
 
@@ -45,6 +46,7 @@ def bot_startup_monologue(bot, trigger):
         time.sleep(1)
 
     # Startup
+    stderr("[Sopel-startupmonologue] " + bot.nick + " is now starting. Please wait while I load my configuration.")
     bot.osd(" is now starting. Please wait while I load my configuration.", bot.channels.keys(), 'ACTION')
 
     startupcomplete = [bot.nick + " startup complete"]
@@ -61,6 +63,7 @@ def bot_startup_monologue(bot, trigger):
                 availablecomsnum += len(bot.memory['Sopel-CommandsQuery'][commandstype].keys())
 
         startupcomplete.append("There are " + str(availablecomsnum) + " commands available in " + str(availablecomsfiles) + " files.")
+        stderr("[Sopel-startupmonologue] " + "There are " + str(availablecomsnum) + " commands available in " + str(availablecomsfiles) + " files.")
 
     if botevents_installed:
         while "Sopel-BotEvents" not in bot.memory:
@@ -73,3 +76,4 @@ def bot_startup_monologue(bot, trigger):
 
     if botevents_installed:
         startup_bot_event(bot, "Sopel-StartupMonologue")
+    stderr("[Sopel-startupmonologue] " + bot.nick + " startup complete")
