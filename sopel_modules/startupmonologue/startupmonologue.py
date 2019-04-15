@@ -51,8 +51,12 @@ def bot_startup_monologue(bot, trigger):
 
     startupcomplete = [bot.nick + " startup complete"]
     if commandsquery_installed:
-        while 'Sopel-CommandsQuery' not in bot.memory:
-            pass
+        if botevents_installed:
+            while not check_bot_events(bot, ["Sopel-CommandsQuery"]):
+                pass
+        else:
+            while 'Sopel-CommandsQuery' not in bot.memory:
+                pass
 
         availablecomsnum, availablecomsfiles = 0, 0
 
