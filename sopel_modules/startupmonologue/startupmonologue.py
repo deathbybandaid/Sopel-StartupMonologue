@@ -66,8 +66,6 @@ def bot_startup_monologue(bot, trigger):
         stderr("[Sopel-startupmonologue] " + "There are " + str(availablecomsnum) + " commands available in " + str(availablecomsfiles) + " files.")
 
     if botevents_installed:
-        while "Sopel-BotEvents" not in bot.memory:
-            pass
         while not check_bot_events(bot, ["startup_complete"]):
             pass
 
