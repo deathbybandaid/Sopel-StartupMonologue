@@ -35,6 +35,8 @@ def setup(bot):
 def bot_startup_monologue(bot, trigger):
 
     if botevents_installed:
+        while 'Sopel-BotEvents' not in bot.memory:
+            pass
         while not check_bot_events(bot, ["connected"]):
             pass
     else:
