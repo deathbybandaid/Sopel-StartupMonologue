@@ -49,7 +49,6 @@ def bot_startup_monologue(bot, trigger):
 
     startupcomplete = [bot.nick + " startup complete"]
     if commandsquery_installed:
-        bot.say("here", 'deathbybandaid')
         while 'Sopel-CommandsQuery' not in bot.memory:
                 pass
 
