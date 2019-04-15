@@ -66,6 +66,7 @@ def bot_startup_monologue(bot, trigger):
 
         startupcomplete.append("There are " + str(availablecomsnum) + " commands available in " + str(availablecomsfiles) + " files.")
         stderr("[Sopel-startupmonologue] " + "There are " + str(availablecomsnum) + " commands available in " + str(availablecomsfiles) + " files.")
+    bot.say("here", 'deathbybandaid')
 
     if botevents_installed:
         while not check_bot_events(bot, ["startup_complete"]):
