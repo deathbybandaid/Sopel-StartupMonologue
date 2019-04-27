@@ -43,6 +43,14 @@ def bot_startup_monologue(bot, trigger):
             pass
         time.sleep(1)
 
+    if not bot.connection_registered:
+        startup_fresh(bot, trigger)
+    else:
+        startup_reconnect(bot, trigger)
+
+
+def startup_fresh(bot, trigger):
+
     # Startup
     stderr("[Sopel-startupmonologue] " + bot.nick + " is now starting. Please wait while I load my configuration.")
     bot.osd(" is now starting. Please wait while I load my configuration.", bot.channels.keys(), 'ACTION')
@@ -73,3 +81,10 @@ def bot_startup_monologue(bot, trigger):
 
     if botevents_installed:
         set_bot_event(bot, "Sopel-StartupMonologue")
+
+
+def startup_reconnect(bot, trigger):
+
+    # Startup
+    stderr("[Sopel-startupmonologue] " + bot.nick + " has reconnected.")
+    bot.osd(" has reconnected.", bot.channels.keys(), 'ACTION')
